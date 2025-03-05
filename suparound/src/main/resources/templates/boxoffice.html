@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BoxOffice</title>
+</head>
+<body>
+    <h3>일별 박스오피스</h3>
+    <ul>
+        <li th:each="rank, iterStat: ${rankList}">
+            <p><span th:text="${iterStat.index + 1} + '위: ' + ${rank}"></span></p>
+            <p>누적관객: <span th:text="${accList[iterStat.index]}"> 명</span></p>
+        </li>
+    </ul>
+</body>
+</html>
