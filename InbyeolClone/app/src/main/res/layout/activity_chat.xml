@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        tools:context=".ChatActivity">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/inbyeolclone_logo"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/logo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginRight="20dp" />
+
+        <LinearLayout
+            android:id="@+id/edit_wrap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/input_box"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:maxLines="2"
+                android:hint="Comment..."
+                android:textSize="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/send_btn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"
+                android:text="send"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>
