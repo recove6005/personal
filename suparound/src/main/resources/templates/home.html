@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
     <title>SupAround</title>
 </head>
 <body>
-    <h1>안녕하세요, <span th:text="${name}"> user</span>!</h1>
+    <div class="menu-box">
+        <a th:href="@{/boxoffice}">boxoffice</a>
+        <a th:href="@{/sunsets}">sunsets</a>
+    </div>
 </body>
 </html>

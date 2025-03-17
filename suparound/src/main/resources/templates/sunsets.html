@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/sunsets.css}">
+    <title>Title</title>
+</head>
+<body>
+    <div><span th:text="${location}"></span></div>
+    <div>일출: <span th:text="${sunrise}"></span></div>
+    <div>일몰: <span th:text="${sunset}"></span></div>
+    <div>월출: <span th:text="${moonrise}"></span></div>
+    <div>월몰: <span th:text="${moonset}"></span></div>
+    <div>경도: <span th:text="${latitude}"></span></div>
+    <div>위도: <span th:text="${longitude}"></span></div>
+</body>
+</html>
