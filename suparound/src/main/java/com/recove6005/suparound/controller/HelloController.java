@@ -2,6 +2,7 @@ package com.recove6005.suparound.controller;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.recove6005.suparound.service.BoxOfficeService;
+import com.recove6005.suparound.service.PuppyfoodService;
 import com.recove6005.suparound.service.SunsetsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -76,9 +76,17 @@ public class HelloController {
         // model.addAttribute("sunset", sunset);
         // model.addAttribute("moonrise", moonrise);
         // model.addAttribute("moonset", moonset);
-
         return "sunsets";
     }
 
+    @GetMapping("/puppyfood")
+    public String puppyfood(Model model) {
+        PuppyfoodService service = new PuppyfoodService();
+        String result = service.getPuppyfood();
+
+        model.addAttribute("result", result);
+
+        return "puppyfood";
+    }
 
 }
