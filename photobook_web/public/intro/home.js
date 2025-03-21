@@ -25,7 +25,6 @@ document.getElementById('open-drawer').addEventListener('click', (e) => {
     }
 });
 
-// get posters
 async function getPosters() {
     const response = await fetch('/api/poster/get-poster', {
         method: 'POST',
@@ -66,4 +65,3 @@ async function getPosters() {
 document.getElementById('addpic').addEventListener('click', () => {
     window.location.href = '/pages/add-pic.html';
 });
-

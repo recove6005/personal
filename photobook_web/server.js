@@ -26,7 +26,7 @@ app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
 // 라우터 등록
 import posterRouter from './routes/poster-router.js';
-import authRouter from './routes/auth-router.js';
+import authRouter from './routes/auth-router.js'
 app.use('/api', posterRouter);
 app.use('/api', authRouter);
 
