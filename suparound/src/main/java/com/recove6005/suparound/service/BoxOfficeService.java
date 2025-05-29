@@ -57,7 +57,7 @@ public class BoxOfficeService {
             JSONObject jsonObject = new JSONObject(response);
             JSONArray boxofficeList = jsonObject.getJSONObject("boxOfficeResult").getJSONArray("dailyBoxOfficeList");
 
-            ArrayList audiaccList = new ArrayList();
+            ArrayList audiaccList = new ArrayList();        
 
             for(int i = 0; i < boxofficeList.length(); i++) {
                 JSONObject boxoffice = boxofficeList.getJSONObject(i);
@@ -70,4 +70,36 @@ public class BoxOfficeService {
             throw new RuntimeException(e);
         }
     }
+    
+    public ArrayList<String> getDailyBoxOfficeCodeList() {
+    	RestTemplate restTemplate = new RestTemplate();
+    	String targetDate = LocalDate.now().minusDays(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+    	String url = UriComponentsBuilder.fromHttpUrl(API_URL)
+    			.queryParam("key", API_KEY)
+    			.queryParam("targetDt", targetDate)
+    			.queryParam("repNationCd", 'F')
+    			.toUriString();
+    	
+    	String response = restTemplate.getForObject(url, String.class);
+    	
+    	try {
+    		JSONObject jsonObject = new JSONObject(response);
+    		JSONArray boxofficeList = jsonObject.getJSONObject("boxOfficeResult").getJSONArray("dailyBoxOfficeList");
+    		
+    		ArrayList<String> cdList = new ArrayList();
+    		
+    		for(int i = 0; i < boxofficeList.length(); i++) {
+            	JSONObject code = boxofficeList.getJSONObject(i);
+            	String codeStr = code.getString("movieCd");
+            	cdList.add(codeStr);
+            }
+    		
+    		return cdList;
+    	} catch(JSONException e) {
+    		throw new RuntimeException(e);
+    	}
+    }
+    
+    
+    
 }

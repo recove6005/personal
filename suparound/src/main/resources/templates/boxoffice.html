@@ -9,7 +9,9 @@
     <h3>일별 박스오피스</h3>
     <ul>
         <li th:each="rank, iterStat: ${rankList}">
-            <p><span th:text="${iterStat.index + 1} + '위: ' + ${rank}"></span></p>
+            <a th:href="@{/boxoffice/{cd}(cd=${cdList[iterStat.index]})}">
+            <span th:text="${iterStat.index + 1} + '위: ' + ${rank}"></span>
+            </a>
             <p>누적관객: <span th:text="${accList[iterStat.index]}"> 명</span></p>
         </li>
     </ul>

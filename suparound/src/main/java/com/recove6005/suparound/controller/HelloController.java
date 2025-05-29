@@ -1,18 +1,22 @@
 package com.recove6005.suparound.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.xml.sax.SAXException;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.recove6005.suparound.service.BoxOfficeService;
 import com.recove6005.suparound.service.PuppyfoodService;
 import com.recove6005.suparound.service.SunsetsService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.xml.sax.SAXException;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-import java.util.ArrayList;
 
 @Controller
 public class HelloController {
@@ -27,11 +31,20 @@ public class HelloController {
         BoxOfficeService boxOfficeService = new BoxOfficeService();
         ArrayList<String> rankList = boxOfficeService.getDailyBoxOfficeTitleList();
         ArrayList<String> accList = boxOfficeService.getDailyBoxOfficeAudiaccList();
-
+        ArrayList<String> cdList = boxOfficeService.getDailyBoxOfficeCodeList();
+        
         model.addAttribute("rankList", rankList);
         model.addAttribute("accList", accList);
-
+        model.addAttribute("cdList", cdList);
+        
         return "boxoffice";
+    }
+    
+    @GetMapping("/boxoffice/{cd}")
+    public String boxofficeDetail(@PathVariable("cd") String cd, Model model) {
+    	model.addAttribute("cd", cd);
+    	
+    	return "movie";
     }
 
     @GetMapping("/sunsets")
