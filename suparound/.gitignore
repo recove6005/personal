@@ -64,7 +64,8 @@ node_modules/
 
 # dotenv environment variables file
 .env
-suparound-app-firebase-adminsdk-fbsvc-a07493045e.json
+adminsdk-fbsvc.json
+adminsdk-fbsvc
 
 # dataconnect generated files
 .dataconnect

@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/home.css">
     <title>Suparound</title>
 </head>
 <body>
-    <h1>home</h1>
+    <div class="wrapper">
+        <div id="white-board">
+           <ul id="board-list">
+                <li><a href="#">Content 1</a></li>
+                <li><a href="#">Content 2</a></li>
+                <li><a href="#">Content 3</a></li>
+            </ul>
+        </div>
+        <div id="caption-section">
+            <p>Whole Board</p>
+        </div>
+        <form id="move-section">
+            <input id="move-to-text" type="text" placeholder="Path name">
+            <button id="move-to-btn">Enter</button>
+        </form>
+    </div>
 </body>
 <script src="/scripts/home.js" type="module" defer></script>
 </html>

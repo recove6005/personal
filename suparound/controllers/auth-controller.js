@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { store } from "./config/firebase-config.js";
 
@@ -41,3 +41,24 @@ export const authCheck = async (req, res) => {
     return res.sendStatus(200);
 }
 
+export const getBcryptHash = async (req, res) => {
+    const { plain } = req.body;
+    try {
+        const hashed = await bcrypt.hash(plain, 12);
+        return res.status(200).json({ hashed: hashed });
+    } catch(e) {
+        console.log(`Failed to get hashed - ${e}`);
+        return res.sendStatus(500);
+    }
+    
+}
+
+export const load = async (req, res) => {
+    const { type } = req.body;
+
+    if(await bcrypt.compare('boxoffice' , type)) {
+        return res.status(200).json({type: 'boxoffice'});
+    } else {
+        return res.sendStatus(500);
+    }
+}
