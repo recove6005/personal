@@ -18,3 +18,4 @@ enterBox.addEventListener('submit', async (e) => {
         alert(`Nop..`);
     }
 });
+

@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: rgba(2, 46, 2, 0.5);
+}
+
+#date-text {
+    max-width: 1300px;
+    width: 95%;
+    height: 30px;
+    margin: 10px auto;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#content-form {
+    max-width: 1300px;
+    width: 80%;
+    margin: 50px auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+#content-form input {
+    width: 95%;
+    margin: 10px auto;
+    padding: 5px 8px;
+    font-size: 18px;
+}
+
+#content-form textarea {
+    width: 95%;
+    min-height: 200px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+#save-btn {
+    width: 80px;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: #d4d4d4;
+    font-weight: bold;
+    font-size: 16px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+#save-btn:hover {
+    background-color: rgba(2, 46, 2, 0.5);
+    color: white;
+}
+

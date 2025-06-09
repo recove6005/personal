@@ -1,5 +1,30 @@
-function init() {}
-tokenAuthorization();
+const moveBtn = document.getElementById('move-to-btn');
+const movekeyword = document.getElementById('move-to-text');
+const boardUl = document.getElementById('board-list');
+
+var journals = [];
+
+init();
+
+moveBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const hashRes = await fetch('/api/auth/hash', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+            'plain': movekeyword.value,
+        }),    
+    });
+
+    if(hashRes.ok) {
+        const hashResult = await hashRes.json();
+        window.location.href = `/template/box.html?secret=${hashResult.hashed}`;
+    } else {
+        console.log('Nop..');
+    }
+});
 
 async function tokenAuthorization() {
     const authRes = await fetch('/api/auth/check', {
@@ -8,59 +33,44 @@ async function tokenAuthorization() {
         credentials: 'include',
     });
 
-    if(authRes.ok) {
-        init();
-    } else {
+    if(!authRes.ok) {
         alert('Err');
         window.location.href = '/index.html';
     }
 }
 
-const canvas = document.getElementById('white-board');
-
-let drawing = false;
-let mode = true;
-canvas.addEventListener('mousedown', () => drawing = true);
-canvas.addEventListener('mouseup', () => drawing = false);
-canvas.addEventListener('mouseout', () => drawing = false);
-canvas.addEventListener('mousemove', (e) => {
-    if (!drawing) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    if(mode)  {
-        const data = { x, y, color: '#FFFFFF', size: 3 };
-        draw(data);
-    } else {
-        const data = { x, y, color: 'rgba(2, 46, 2)', size: 3 };
-        draw(data);
-    }
-});
-
-const moveBtn = document.getElementById('move-to-btn');
-const moveText = document.getElementById('move-to-text');
-
-moveBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    const hash = '';
-
-    // hash
-    const hashRes = await fetch('/api/auth/hash', {
+async function loadBoxJournals() {
+    const loadRes = await fetch('/api/box/load', {
         method: 'POST',
-        headers: {"Content-Type":"application/json"},
         credentials: 'include',
-        body: JSON.stringify({
-            'plain': moveText.value.trim()
-        }),
     });
 
-    if(hashRes.ok) {
-        const hashResult = await hashRes.json();
-        const path = encodeURIComponent(hashResult.hashed);
-        window.location.href = `/template/main.html?path=${path}`;
+    if(loadRes.ok) {
+        const result = await loadRes.json();
+        journals = result.journals;
     } else {
         alert('Err');
     }
-});
+}
+
+async function displayBoxJournals() {
+    var innerLiHTML = '';
+
+    for(var i = 0; i < journals.length; i++) {
+        innerLiHTML += `
+            <li>
+                <a class="li-title" href="/template/box-journal.html?docId=${journals[i].docId}">‣ ${journals[i].title}</a>
+                <div class="li-date">${journals[i].date}</div>
+            </li>
+        `;
+    }
+
+    boardUl.innerHTML = innerLiHTML;
+}
+
+async function init() {
+   await tokenAuthorization();
+   await loadBoxJournals();
+   await displayBoxJournals();
+}
+
