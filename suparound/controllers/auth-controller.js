@@ -38,7 +38,6 @@ export const gatePass = async (req, res) => {
 }
 
 export const authCheck = async (req, res) => {
-    console.log(await bcrypt.hash('theanswerlieswithinyou', 12));
     return res.sendStatus(200);
 }
 

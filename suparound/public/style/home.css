@@ -19,6 +19,30 @@ body, html {
 #white-board {
     max-width: 1300px;
     width: 90%;
+    height: 250px;
+    border-radius: 16px;
+    background-color: rgba(2, 46, 2, 0.5);
+    padding: 20px 30px;
+    color: white;
+    font-family: sans-serif;
+}
+
+#white-board-draw {
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    resize: none;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+}
+
+#journal-board {
+    max-width: 1300px;
+    width: 90%;
     border-radius: 20px;
     background-color: rgba(2, 46, 2, 0.5);
     padding: 20px 30px;

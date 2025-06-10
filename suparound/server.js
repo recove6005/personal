@@ -26,8 +26,10 @@ app.use(express.static('public'));
 // 라우터 등록
 import authRouter from './routes/auth-route.js';
 import boxRouter from './routes/box.route.js';
+import boardRouter from './routes/board-route.js';
 app.use('/api', authRouter);
 app.use('/api', boxRouter);
+app.use('/api', boardRouter);
 
 // 서버 실행
 app.listen(PORT, () => {

@@ -19,9 +19,9 @@ async function getJournalData() {
 
     if(loadRes.ok) {
         const result = await loadRes.json();
-        title.innerHTML = result.journal['title'];
-        date.innerHTML = result.journal['date'];
-        content.innerHTML = result.journal['content'];
+        title.innerText = result.journal['title'];
+        date.innerText = result.journal['date'];
+        content.innerText = result.journal['content'];
     } else {
         alert('Err');
         window.location.href = '/template/home.html';
