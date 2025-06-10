@@ -1,6 +1,8 @@
 const enterBox = document.getElementById('enter-box');
 const passInput = document.getElementById('gate-password-input');
 
+init();
+
 enterBox.addEventListener('submit', async (e) => {
     e.preventDefault();
     const passStr = passInput.value;
@@ -19,3 +21,18 @@ enterBox.addEventListener('submit', async (e) => {
     }
 });
 
+async function tokenAuthorization() {
+    const authRes = await fetch('/api/auth/check', {
+        method: 'POST',
+        headers: { "Content-Type":"application/json" },
+        credentials: 'include',
+    });
+
+    if(authRes.ok) {
+        window.location.href = '/template/home.html';
+    }
+}
+
+function init() {
+    tokenAuthorization();
+}

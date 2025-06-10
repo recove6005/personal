@@ -29,14 +29,14 @@ body, html {
     min-height: 30px;
     margin: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: start;
 }
 
 #board-list li a {
     color: white;
     font-weight: 700;
-    margin-right: 30px;
+    margin-bottom: 10px;
 }
 
 #board-list li a:hover {
@@ -49,7 +49,7 @@ body, html {
 
 #board-list li div {
     color: white;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #caption-section {
@@ -74,7 +74,7 @@ body, html {
 }
 
 #move-to-text {
-    width: 200px;
+    width: 150px;
     height: 35px;
     padding-left: 10px;
     font-size: 18px;

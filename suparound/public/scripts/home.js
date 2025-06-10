@@ -59,8 +59,8 @@ async function displayBoxJournals() {
     for(var i = 0; i < journals.length; i++) {
         innerLiHTML += `
             <li>
-                <a class="li-title" href="/template/box-journal.html?docId=${journals[i].docId}">‣ ${journals[i].title}</a>
                 <div class="li-date">${journals[i].date}</div>
+                <a class="li-title" href="/template/box-journal.html?docId=${journals[i].docId}">‣ ${journals[i].title}</a>            
             </li>
         `;
     }
